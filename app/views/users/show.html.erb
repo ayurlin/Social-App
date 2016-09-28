@@ -11,5 +11,5 @@
 </p>
 <%= current_user.name %>
 <%= link_to 'log out', logout_path, method: :delete %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(current_user) %> |
 <%= link_to 'Back', users_path %>
