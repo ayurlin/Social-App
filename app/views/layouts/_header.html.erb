@@ -1,0 +1,20 @@
+<%= image_tag("logo.png") %>
+<ul class="nav nav-pills">
+  <li role="presentation", class="active">
+    <%= link_to "Sign up", signup_path %>
+  </li>
+  <li role="presentation">
+    <%= link_to "Sign in", login_path %>
+  </li>
+  <% if logged_in? %>
+    <li role="presentation">
+      <%= link_to "Log out", logout_path, :method => :delete %>
+    </li>
+    <li role="presentation">
+      <%= link_to "Profile", current_user %>
+    </li>
+    <li role="presentation">
+      <%= link_to "Settings", edit_user_path(current_user) %>
+    </li>
+  <% end %>
+</ul>
