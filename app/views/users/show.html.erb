@@ -9,7 +9,5 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-<%= current_user.name %>
+<p><%= link_to 'Add new post', new_post_path %></p>
 <%= link_to 'log out', logout_path, method: :delete %>
-<%= link_to 'Edit', edit_user_path(current_user) %> |
-<%= link_to 'Back', users_path %>

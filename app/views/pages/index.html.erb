@@ -1,2 +1,13 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>Latest posts</h1>
+  <% @users.each do |user| %>
+    <% unless user.posts.empty? %>
+      <h4><%= user.name %></h4>
+      <% user.posts.each do |post| %>
+        <p><%= post.content %></p>
+        <p><%= post.created_at %></p>
+        <div class="comment">
+          
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
