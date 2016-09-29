@@ -5,9 +5,13 @@
       <% user.posts.each do |post| %>
         <p><%= post.content %></p>
         <p><%= post.created_at %></p>
+        <p><%= link_to 'Add Comment', new_comment_path(post_id: post.id), remote: true %></p>
         <div class="comment">
           
         </div>
+        <% post.comments.each do |c| %>
+          <p><%= c.content %></p>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
