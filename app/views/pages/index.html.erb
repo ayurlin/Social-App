@@ -1,19 +1,38 @@
-<h1>Latest posts</h1>
-  <% @users.each do |user| %>
-    <% unless user.posts.empty? %>
-      <h4><%= user.name %></h4>
-      <% user.posts.each do |post| %>
-        <p><%= post.content %></p>
-        <p><%= post.created_at %></p>
-        <% post.comments.each do |c| %>
-          <p><%= c.content %></p>
+<div class='posts-container'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <h2>Latest posts</h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-8'>
+      <% @users.each do |user| %>
+        <% unless user.posts.empty? %>
+          <h4 class='post-author'><%= user.name %></h4>
+          <% user.posts.each do |post| %>
+            <div>
+              <blockquote>
+                <p class='post'><%= post.content %></p>
+              </blockquote>
+              <p class='created-at'><%= post.created_at %></p>
+            </div>
+            <a class="btn btn-primary see-comments-btn" role="button" data-toggle="collapse" href="#commentCollapse" aria-expanded="false" aria-controls="commentCollapse">see comments</a>
+            <div class="collapse well comments-container" id="commentCollapse">
+              <% post.comments.each do |c| %>
+                <p class='comment'><%= c.content %></p>
+                <p class='comment-author'><%= c.user.name %></p>
+                <span class='created-at'><%= c.created_at %></span>
+              <% end %>
+              <% if logged_in? %>
+                <p class='btn btn-info add-comment-btn'><%= link_to 'Add Comment', new_post_comment_path(post_id: post.id), remote: true %></p>
+                <div class='add-comment add-comment-post-<%= post.id %>'></div>
+              <% else %>
+                <p>Please log in to comment posts</p>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-        <% if logged_in? %>
-        <p><%= link_to 'Add Comment', new_comment_path(post_id: post.id), remote: true %></p>
-        <div class="comment"></div>
-      <% else %>
-        <p>Please log in to comment posts</p>
       <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
+</div>

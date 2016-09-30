@@ -1,2 +1,82 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+a {
+  border: none;
+  display: inline-block;
+  &:hover, &:focus {
+    background-color: transparent;
+    text-decoration: none;
+  }
+}
+blockquote {
+  margin: 50px 0 30px;
+  .post {
+    margin: 0;
+  }
+}
+
+
+/* MAIN PAGE */
+
+.add-comment-btn {
+  padding: 0;
+  a {
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  }
+}
+.post-author {
+  margin: 60px 60px 10px 30px;
+}
+p.created-at {
+  margin: 0 0 30px 20px;
+  font-size: 10px;
+}
+.see-comments-btn {
+  font-size: 12px;
+  margin: 0 0 20px 20px;
+}
+
+.comments-container {          /* comments field*/
+
+  .comment {
+    margin: 15px;
+    font-size: 10px;
+    &.comment:not(:first-child) {
+      border-top: solid 1px #ccc;
+      padding-top: 40px;
+    }
+  }
+  .comment-author {
+    font-size: 11px;
+    margin: 15px;
+    font-weight: bold;
+    display: inline-block;
+    width: 45%;
+  }
+  .created-at {
+    width: 48%;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: right;
+  }
+  .add-comment {
+    form {
+      padding-top: 30px;
+      textarea {
+        width: 50%;
+        height: 200px;
+        padding: 8px;
+      }
+    }
+  }
+  .add-comment-btn {
+    font-size: 12px;
+    margin: 70px 0 0;
+  }
+
+}

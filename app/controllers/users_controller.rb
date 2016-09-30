@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: :show
 
   # GET /users
   # GET /users.json
@@ -71,5 +72,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def check_user
+      redirect_to root_url, notice: 'Nie mozesz!' unless @user == current_user
     end
 end
