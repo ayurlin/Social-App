@@ -31,6 +31,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        log_in @user
+        remember @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -77,4 +79,5 @@ class UsersController < ApplicationController
     def check_user
       redirect_to root_url, notice: 'Nie mozesz!' unless @user == current_user
     end
+
 end
