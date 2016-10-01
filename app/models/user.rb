@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence: true
@@ -7,7 +8,8 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 4 }
+  validates :password, presence: true, length: { minimum: 4 }, on: :create
+  validates :password, presence: true, length: { minimum: 4 }, on: :logged_in?
   has_many :posts
   has_many :comments
 

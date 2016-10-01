@@ -8,7 +8,10 @@
     <div class='col-sm-8'>
       <% @users.each do |user| %>
         <% unless user.posts.empty? %>
-          <h4 class='post-author'><%= user.name %></h4>
+          <h4 class='post-author'>
+            <%= image_tag(user.avatar.thumb.url) unless user.avatar.blank? %>
+            <%= user.name %>
+          </h4>
           <% user.posts.each do |post| %>
             <div>
               <blockquote>

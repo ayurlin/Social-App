@@ -1,5 +1,5 @@
 <div class='row'>
-  <div class='col-sm-12'> 
+  <div class='col-sm-9'> 
     <ul class="nav nav-pills">
       <li>
         <%= link_to 'Home', root_path %>
@@ -23,5 +23,11 @@
         </li>
       <% end %>
     </ul>
+  </div>
+  <div class='user-name col-sm-3'>
+  <% if logged_in? %>
+    <span> Witaj</span>
+    <%= current_user.name %>
+  <% end %>
   </div>
 </div>
