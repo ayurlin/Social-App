@@ -18,6 +18,13 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <%= f.label :gender %>
+  <%= f.select :gender, User.genders.keys %>
+
   <%= image_tag(@user.avatar.thumb.url) %>
   <% if !@user.avatar.blank? %>
     <%= f.label :remove_avatar, 'Remove avatar' %>

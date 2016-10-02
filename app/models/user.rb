@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   has_many :posts
   has_many :comments
+  enum gender: [ :male, :female ]
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
