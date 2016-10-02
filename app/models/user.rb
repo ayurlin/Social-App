@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 4 }, on: :create
   validates :password, presence: true, length: { minimum: 4 }, on: :logged_in?
+  validates :last_name, presence: true
   has_many :posts
   has_many :comments
 
