@@ -8,7 +8,9 @@
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
-  <%= image_tag(@user.avatar.thumb.url) unless @user.avatar.blank? %>
+  
+    <%= image_tag(@user.avatar.thumb.url) %>
+  
 </p>
 <p><%= link_to 'Add new post', new_post_path %></p>
 <%= link_to 'log out', logout_path, method: :delete %>

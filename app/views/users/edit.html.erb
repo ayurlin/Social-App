@@ -18,12 +18,20 @@
     <%= f.text_field :name %>
   </div>
 
-
-
-  <div class="field">
-    <%= f.label :avatar %><br>
+  <%= image_tag(@user.avatar.thumb.url) %>
+  <% if !@user.avatar.blank? %>
+    <%= f.label :remove_avatar, 'Remove avatar' %>
+    <%= f.check_box :remove_avatar %>
+    <div class="field">
+    <%= f.label :avatar, 'Change Your avatar' %><br>
     <%= f.file_field :avatar %>
   </div>
+  <% else %>
+    <%= f.label :avatar, 'Add Your avatar' %><br>
+    <%= f.file_field :avatar %>
+  <% end %>
+
+  
 
   <div class="actions">
     <%= f.submit "Update", class: "btn btn-primary" %>
