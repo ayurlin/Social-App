@@ -66,6 +66,18 @@ class UsersController < ApplicationController
   end
 
 
+  def add_interest
+    @user = User.find(params[:user_id])
+    @user.interests << params[:interest]
+    message = if @user.save
+                'User was successfully updated.'
+              else
+                'Error'
+              end
+    redirect_to @user, notice: message
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -74,7 +86,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :remove_avatar, :last_name, :gender)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :remove_avatar, :last_name, :gender, interests: [])
     end
 
     def check_user

@@ -9,7 +9,7 @@
       <% @users.each do |user| %>
         <% unless user.posts.empty? %>
           <h4 class='post-author'>
-            <%= image_tag(user.avatar.thumb.url) %>
+            <%= image_tag user.avatar.thumb.url %>
             <%= user.name %>
           </h4>
           <% user.posts.each do |post| %>

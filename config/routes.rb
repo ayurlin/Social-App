@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :posts do
       resources :comments
   end
-  resources :users, except:[:new]
+  resources :users, except:[:new] do
+    post :add_interest
+  end
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
   get '/login', to: 'sessions#new', as: 'login'
