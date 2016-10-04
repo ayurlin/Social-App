@@ -7,21 +7,10 @@
     <p><%= link_to 'Add new post', new_post_path, class: 'btn' %></p>
   </div>
   <aside class='col-sm-3'>
-    <ul>
-      <% @user.interests.each do |interest| %>
-        <li><%= interest %></li>
-      <% end %>
-    </ul>
-    <button class='btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
-      Add interest
-    </button>
-    <div class='collapse' id='add_interest'>
-    <%= form_tag user_add_interest_path(@user) do %>
-      <%= label_tag :interest, 'Add Your interest:' %>
-      <%= text_field_tag :interest %>
-      <%= submit_tag 'Add' %>
-    <% end %>
-    </div>
+
+<%= @user.interests %>
+
+    
   </aside>
 </div>
   

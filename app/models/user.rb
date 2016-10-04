@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  serialize :interests, Array
   mount_uploader :avatar, AvatarUploader
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
