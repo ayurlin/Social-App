@@ -64,6 +64,8 @@ header {
   line-height: 2.9em;
 }
 
+/* END OF HEADER */
+
 /* MAIN PAGE */
 
 .add-comment-btn {
@@ -85,6 +87,10 @@ p.created-at {
 .see-comments-btn {
   font-size: 12px;
   margin: 0 0 20px 20px;
+  .comments-count {
+    right: -8px;
+    font-size: 14px;
+  }
 }
 .posts-container {
   h2 {
@@ -92,6 +98,7 @@ p.created-at {
     margin: 80px 0 0;
   }
 }
+
 
 .comments-container {          /* comments field*/
 
@@ -133,3 +140,20 @@ p.created-at {
   }
 
 }
+
+/* END OF MAIN PAGE */
+
+/* EDIT PAGE */
+
+.edit-user-page {
+  text-align: center;
+}
+form.edit_user {
+  width: 60%;
+  margin: 60px auto;
+  input#user_avatar {
+    display: inline-block;
+  }
+}
+
+/* END OF EDIT PAGE */

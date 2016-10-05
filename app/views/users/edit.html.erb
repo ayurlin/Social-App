@@ -1,49 +1,44 @@
-<h1>Editing User</h1>
+<div class='row'>
+  <div class='col-sm-12'>
+    <div class='edit-user-page'>
+      <h1>Settings</h1>
+      <%= image_tag(@user.avatar.thumb.url) %>
 
-<%= form_for(@user) do |f| %> 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <%= form_for(@user) do |f| %> 
+        <%= render 'shared/error_messages' %>
+        <div class='col-sm-6'>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class='col-sm-6'>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: 'form-control' %>
+        </div>
+        <div class='col-sm-6'>
+          <%= f.label :gender %>
+          <%= f.select :gender, User.genders.keys, class: 'form-control' %>
+        </div>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <% if !@user.avatar.blank? %>
+          <div class='col-sm-6'>
+            <%= f.label :remove_avatar, 'Remove avatar' %>
+            <%= f.check_box :remove_avatar, class: 'form-control' %>
+          </div>
+          <div class='col-sm-6'>
+            <%= f.label :avatar, 'Change Your avatar' %>
+            <%= f.file_field :avatar, class: 'form-control' %>
+          </div>
+        <% else %>
+          <div class='col-sm-6'>
+            <%= f.label :avatar, 'Add Your avatar' %>
+            <%= f.file_field :avatar %>
+          </div>
+        <% end %>
+        <div class='col-sm-12'>
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-  <%= f.label :gender %>
-  <%= f.select :gender, User.genders.keys %>
-
-  <%= image_tag(@user.avatar.thumb.url) %>
-  <% if !@user.avatar.blank? %>
-    <%= f.label :remove_avatar, 'Remove avatar' %>
-    <%= f.check_box :remove_avatar %>
-    <div class="field">
-    <%= f.label :avatar, 'Change Your avatar' %><br>
-    <%= f.file_field :avatar %>
-  </div>
-  <% else %>
-    <%= f.label :avatar, 'Add Your avatar' %><br>
-    <%= f.file_field :avatar %>
-  <% end %>
-
-
-
-  <div class="actions">
-    <%= f.submit "Update", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

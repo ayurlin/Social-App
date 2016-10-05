@@ -26,7 +26,7 @@
                 <p>Updated: <%= post.updated_at %></p>
               <% end %>
             </div>
-            <a class="btn btn-primary see-comments-btn" role="button" data-toggle="collapse" href="#commentCollapse-<%= post.id %>" aria-expanded="false" aria-controls="commentCollapse">see comments</a>
+            <a class="btn btn-primary see-comments-btn" role="button" data-toggle="collapse" href="#commentCollapse-<%= post.id %>" aria-expanded="false" aria-controls="commentCollapse">see comments <span class='comments-count badge'><%= post.comments.count %></span></a>     
             <div class="collapse well comments-container" id="commentCollapse-<%= post.id %>">
               <% post.comments.each do |c| %>
                 <p class='comment'><%= c.content %></p>

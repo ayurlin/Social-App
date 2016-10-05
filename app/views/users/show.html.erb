@@ -13,6 +13,9 @@
           <p class='post'><%= post.content %></p>
         </blockquote>
         <p class='created-at'><%= post.created_at %></p>
+        <% if post.created_at != post.updated_at %>
+          <p>Updated: <%= post.updated_at %></p>
+        <% end %>
         <% if current_user.id == @user.id %>
           <%= link_to 'Edit', edit_post_path(post.id) %>
         <% end %>
