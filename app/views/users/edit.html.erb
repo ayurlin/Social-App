@@ -38,16 +38,7 @@
     <%= f.file_field :avatar %>
   <% end %>
 
-  <button class='btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
-      Add interest
-    </button>
-    <div class='collapse' id='add_interest'>
-    <%= form_for @user do |f| %>
-      <%= f.label :interests, 'Add Your interest:' %>
-      <%= f.text_area :interests %>
-      <%= f.submit 'Add' %>
-    <% end %>
-    </div>
+
 
   <div class="actions">
     <%= f.submit "Update", class: "btn btn-primary" %>

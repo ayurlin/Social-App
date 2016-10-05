@@ -11,11 +11,58 @@ a {
 }
 blockquote {
   margin: 50px 0 30px;
+  border-left: 5px solid #a01c39;
   .post {
     margin: 0;
   }
 }
+.main-nav li > a.active {
+  color: #fff;
+  background-color: #a01c39;
+}
+.notice {
+  margin: 0;
+  position: fixed;
+  background-color: #a01c39;
+  color: #fff;
+}
+.thumb-img {
+  height: 50px;
+  width: 50px;
+}
 
+/* HEADER */
+
+header {
+  width: 100%;
+  height: 50px;
+  border-bottom: solid 2px #a01c39;
+  .main-nav {
+    height: 50px;
+    li {
+      height: 50px;
+      width: 15%;
+      margin: 0;
+      a {
+        height: 48px;
+        border-radius: 0;
+        text-align: center;
+        line-height: 25px;
+        color: #a01c39;
+        &:hover {
+          background-color: #C7ABB1;
+          color: #fff;
+        }
+      }  
+    }
+  }
+}
+.user-name {
+  text-align: center;
+  font-size: 16px;
+  display: block;
+  line-height: 2.9em;
+}
 
 /* MAIN PAGE */
 
@@ -38,6 +85,12 @@ p.created-at {
 .see-comments-btn {
   font-size: 12px;
   margin: 0 0 20px 20px;
+}
+.posts-container {
+  h2 {
+    text-align: center;
+    margin: 80px 0 0;
+  }
 }
 
 .comments-container {          /* comments field*/

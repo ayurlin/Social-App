@@ -1,33 +1,58 @@
-<div class='row'>
-  <div class='col-sm-9'> 
-    <ul class="nav nav-pills">
-      <li>
-        <%= link_to 'Home', root_path %>
-      </li>
-      <% unless logged_in? %>
-        <li role="presentation", class="active">
-          <%= link_to "Sign up", signup_path %>
+<header>
+  <div class='row'>
+    <div class='col-sm-9'> 
+      <ul class="nav nav-pills main-nav">
+        <li>
+          <% if current_page?(root_path) %>
+            <%= link_to 'Home', root_path, class: 'active' %>
+          <% else %>
+            <%= link_to 'Home', root_path %>
+          <% end %>
         </li>
-        <li role="presentation">
-          <%= link_to "Sign in", login_path %>
-        </li>
-        <% else %>
-        <li role="presentation">
-          <%= link_to "Log out", logout_path, :method => :delete %>
-        </li>
-        <li role="presentation">
-          <%= link_to "Profile", current_user %>
-        </li>
-        <li role="presentation">
-          <%= link_to "Settings", edit_user_path(current_user) %>
-        </li>
-      <% end %>
-    </ul>
+        <% unless logged_in? %>
+          <li role="presentation">
+            <% if current_page?(signup_path) %>
+              <%= link_to "Sign up", signup_path, class: 'active' %>
+            <% else %>
+              <%= link_to "Sign up", signup_path %>
+            <% end %>
+          </li>
+          <li role="presentation">
+            <% if current_page?(login_path) %>
+              <%= link_to "Sign in", login_path, class: 'active' %>
+            <% else %>
+              <%= link_to "Sign in", login_path %>
+            <% end %>
+          </li>
+          <% else %>
+          <li role="presentation">
+            <% if current_page?(logout_path) %>
+              <%= link_to "Log out", logout_path, :method => :delete, class: 'active' %>
+            <% else %>
+              <%= link_to "Log out", logout_path, :method => :delete %>
+            <% end %>
+          </li>
+          <li role="presentation">
+            <% if current_page?(current_user) %>
+              <%= link_to "Profile", current_user, class: 'active' %>
+            <% else %>
+              <%= link_to "Profile", current_user %>
+            <% end %>
+          </li>
+          <li role="presentation">
+            <% if current_page?(edit_user_path(current_user)) %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'active' %>
+            <% else %>
+              <%= link_to "Settings", edit_user_path(current_user) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='col-sm-3'>
+    <% if logged_in? %>
+      <span class='user-name'> Witaj <%= current_user.name %>!</span>
+    <% end %>
+    </div>
   </div>
-  <div class='user-name col-sm-3'>
-  <% if logged_in? %>
-    <span> Witaj</span>
-    <%= current_user.name %>
-  <% end %>
-  </div>
-</div>
+</header>
