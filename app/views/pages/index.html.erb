@@ -37,7 +37,7 @@
                 <p class='btn btn-info add-comment-btn'><%= link_to 'Add Comment', new_post_comment_path(post_id: post.id), remote: true %></p>
                 <div class='add-comment add-comment-post-<%= post.id %>'></div>
               <% else %>
-                <p>Please log in to comment posts</p>
+                <p>Please log in to comment on posts</p>
               <% end %>
             </div>
           <% end %>
