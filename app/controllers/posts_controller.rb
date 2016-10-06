@@ -40,9 +40,10 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @user = User.find(params[:id])
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
