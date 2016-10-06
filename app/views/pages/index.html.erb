@@ -10,11 +10,7 @@
         <% unless user.posts.empty? %>
           <h4 class='post-author'>
           <%= image_tag user.avatar.thumb.url, class: 'thumb-img' %>
-          <% if logged_in? %>
             <%= link_to user.name, user_path(user.id) %>
-          <% else %>
-            <%= link_to user.name, login_path %>
-          <% end %>
           </h4>
           <% user.posts.each do |post| %>
             <div>

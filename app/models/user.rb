@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   has_many :posts
   has_many :comments
+  has_many :user_friendships
+  has_many :friends, through: :user_friendships
   enum gender: [ :male, :female ]
 
   def User.digest(string)

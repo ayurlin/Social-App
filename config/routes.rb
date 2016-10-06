@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+
+  resources :user_friendships
   resources :posts do
       resources :comments
   end
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   root 'pages#index'
+  
 end

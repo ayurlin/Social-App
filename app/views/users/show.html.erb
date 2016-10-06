@@ -1,42 +1,51 @@
 <div class='row profile-page'>
   <div class='col-sm-9'>
+  <% if logged_in? %>
+    <% if !is_friend && !same_user %>
+      <%= link_to 'Add Friend', new_user_friendship_path(friend_id: @user) %>
+    <% elsif is_friend %>
+      <%= link_to 'Destroy', user_friendship_url, method: :delete %>
+    <% end %>
+  <% end %>
     <%= image_tag(@user.avatar.url) %>
     <p><strong>Name:</strong><%= @user.name %></p>
     <p><strong>Email:</strong><%= @user.email %></p>
     <p><strong>gender:</strong> <%= @user.gender %></p>
-    <% if current_user.id == @user.id %>
-      <p><%= link_to 'Add new post', new_post_path, class: 'btn' %></p>
-    <% end %>
-    <% @current_user.posts.each do |post| %>
-      <div>
-        <blockquote>
-          <p class='post'><%= post.content %></p>
-        </blockquote>
-        <p class='created-at'><%= post.created_at %></p>
-        <% if post.created_at != post.updated_at %>
-          <p>Updated: <%= post.updated_at %></p>
-        <% end %>
-        <% if current_user.id == @user.id %>
-          <%= link_to 'Edit', edit_post_path(post.id) %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <aside class='col-sm-3'>
-    <h4>My interests:</h4>
-      <p class='interests'><%= @user.interests %></p>
-    <% if current_user.id == @user.id %>
-      <button class='btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
-        Add interest
-      </button>
-      <div class='collapse' id='add_interest'>
-      <%= form_for @user, remote: true do |f| %>
-        <%= f.label :interests, 'Add Your interest:' %>
-        <%= f.text_area :interests %>
-        <%= f.submit "Add interests", class: "btn btn-primary" %>
+    <% if logged_in? %>
+      <% if current_user.id == @user.id %>
+        <p><%= link_to 'Add new post', new_post_path, class: 'btn' %></p>
       <% end %>
-      </div>
+      <% @current_user.posts.each do |post| %>
+        <div>
+          <blockquote>
+            <p class='post'><%= post.content %></p>
+          </blockquote>
+          <p class='created-at'><%= post.created_at %></p>
+          <% if post.created_at != post.updated_at %>
+            <p>Updated: <%= post.updated_at %></p>
+          <% end %>
+          <% if same_user %>
+            <%= link_to 'Edit', edit_post_path(post.id) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <aside class='col-sm-3'>
+      <% if same_user %>
+        <button class='btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
+          Add interest
+        </button>
+        <div class='collapse' id='add_interest'>
+        <%= form_for @user, remote: true do |f| %>
+          <%= f.label :interests, 'Add Your interest:' %>
+          <%= f.text_area :interests %>
+          <%= f.submit "Add interests", class: "btn btn-primary" %>
+        <% end %>
+        </div>
+      <% end %>
     <% end %>
+    <h4>My interests:</h4>
+    <p class='interests'><%= @user.interests %></p>
   </aside>
 </div>
   
