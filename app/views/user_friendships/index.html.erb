@@ -1,0 +1,21 @@
+<% @user_friendships.each do |friendship| %>
+  <% friend = friendship.friend %>
+  <div id='<%=dom_id(friendship) %>' class='friend'>
+    <%= link_to friend.name, user_path(friend) %>
+    <%= link_to image_tag(friend.avatar.url), user_path(friend) %>
+  </div>
+  <div>
+    <% if friendship.pending? %>
+      <span>Friendship is pending.</span>
+      <%= link_to 'Delete rquest', edit_user_friendship_path(friendship) %>
+    <% end %>
+    <% if friendship.requested? %>
+      <span>Friendship requested.</span>
+      <%= link_to 'Accept friendship', edit_user_friendship_path(friendship) %>
+    <% end %>
+    <% if friendship.accepted? %>
+      <span>Friendship started <%= friendship.updated_at %> </span>
+      <%= link_to 'Update friendship', edit_user_friendship_path(friendship) %>
+    <% end %>
+  </div>
+<% end %>

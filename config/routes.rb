@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :user_friendships
+  resources :user_friendships do
+    member do
+      put :accept
+    end
+  end
   resources :posts do
       resources :comments
   end
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/friends', to: 'user_friendships#index'
   root 'pages#index'
   
 end

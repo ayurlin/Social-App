@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006114553) do
+ActiveRecord::Schema.define(version: 20161008074215) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20161006114553) do
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
+    t.index ["state"], name: "index_user_friendships_on_state"
     t.index ["user_id", "friend_id"], name: "index_user_friendships_on_user_id_and_friend_id"
   end
 

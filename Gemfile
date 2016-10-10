@@ -32,6 +32,12 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'state_machine'
+
+
+group :test do
+  gem 'factory_girl_rails'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

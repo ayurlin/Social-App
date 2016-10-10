@@ -3,8 +3,11 @@
   <% if logged_in? %>
     <% if !is_friend && !same_user %>
       <%= link_to 'Add Friend', new_user_friendship_path(friend_id: @user) %>
-    <% elsif is_friend %>
-      <%= link_to 'Destroy', user_friendship_url, method: :delete %>
+    <% elsif same_user %>
+      <h5>Your friendlist:</h5>
+      <% current_user.friends.each do |f| %>
+        <%= f.name %>
+      <% end %>
     <% end %>
   <% end %>
     <%= image_tag(@user.avatar.url) %>
@@ -48,6 +51,7 @@
     <p class='interests'><%= @user.interests %></p>
   </aside>
 </div>
+<%= link_to 'friends', friends_path %>
   
 
   
