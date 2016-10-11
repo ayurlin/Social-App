@@ -1,57 +1,76 @@
 <div class='row profile-page'>
   <div class='col-sm-9'>
-  <% if logged_in? %>
-    <% if !is_friend && !same_user %>
-      <%= link_to 'Add Friend', new_user_friendship_path(friend_id: @user) %>
-    <% elsif same_user %>
-      <h5>Your friendlist:</h5>
-      <% current_user.friends.each do |f| %>
-        <%= f.name %>
+    <div class='row'>
+      <div class='col-sm-3'>
+        <%= image_tag(@user.avatar.url, class: 'normal-avatar') %>
+      </div>
+      <p class='col-sm-3'><strong>Name: </strong><%= @user.name %></p>
+      <p class='col-sm-3'><strong>Email: </strong><%= @user.email %></p>
+      <% if @user.gender.nil? %>
+        <p class='col-sm-3'><strong>gender: </strong>User did not specify gender</p>
+      <% else %>
+        <p class='col-sm-3'><strong>gender: </strong> <%= @user.gender %></p>
       <% end %>
-    <% end %>
-  <% end %>
-    <%= image_tag(@user.avatar.url) %>
-    <p><strong>Name:</strong><%= @user.name %></p>
-    <p><strong>Email:</strong><%= @user.email %></p>
-    <p><strong>gender:</strong> <%= @user.gender %></p>
+    </div>
     <% if logged_in? %>
       <% if current_user.id == @user.id %>
-        <p><%= link_to 'Add new post', new_post_path, class: 'btn' %></p>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <p><%= link_to 'Add new post', new_post_path, class: 'btn btn-primary add-post-btn' %></p>
+          </div>
+        </div>
       <% end %>
-      <% @current_user.posts.each do |post| %>
+      <% @user.posts.each do |post| %>
         <div>
           <blockquote>
             <p class='post'><%= post.content %></p>
           </blockquote>
-          <p class='created-at'><%= post.created_at %></p>
-          <% if post.created_at != post.updated_at %>
-            <p>Updated: <%= post.updated_at %></p>
-          <% end %>
+          <div class='row'>
+            <p class='created-at col-sm-5'><%= post.created_at %></p>
+            <% if post.created_at != post.updated_at %>
+              <p class='created-at col-sm-6'>Updated: <%= post.updated_at %></p>
+            <% end %>
+          </div>
           <% if same_user %>
-            <%= link_to 'Edit', edit_post_path(post.id) %>
+            <%= link_to 'Edit', edit_post_path(post.id), class: 'btn btn-warning edit-btn' %>
           <% end %>
-        </div>
-      <% end %>
-    </div>
-    <aside class='col-sm-3'>
-      <% if same_user %>
-        <button class='btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
-          Add interest
-        </button>
-        <div class='collapse' id='add_interest'>
-        <%= form_for @user, remote: true do |f| %>
-          <%= f.label :interests, 'Add Your interest:' %>
-          <%= f.text_area :interests %>
-          <%= f.submit "Add interests", class: "btn btn-primary" %>
-        <% end %>
         </div>
       <% end %>
     <% end %>
+  </div>
+  <aside class='col-sm-3'>
+    <% if logged_in? %>
+      <% if !is_friend && !same_user %>
+        <%= link_to 'Add Friend', new_user_friendship_path(friend_id: @user) %>
+      <% elsif same_user %>
+        <h4>Your friendlist:</h4>
+        <% if current_user.friends.empty? %>
+          <p class='text-danger'>You don't have any friends</p>
+        <% else %>
+          <% current_user.friends.each do |friend| %>
+            <%= link_to friend.full_name, user_path(id: friend) %></p>
+          <% end %>
+        <% end %>
+        <%= link_to 'See my friends', friends_path, class: 'btn btn-success see-friends-btn' %>
+      <% end %>
+    <% end %>
     <h4>My interests:</h4>
-    <p class='interests'><%= @user.interests %></p>
+      <p class='interests'><%= @user.interests %></p>
+    <% if same_user %>
+      <button class='btn btn-info add-interests-btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
+        Add interest
+      </button>
+      <div class='collapse' id='add_interest'>
+        <%= form_for @user, remote: true do |f| %>
+          <%= f.label :interests, 'Add Your interest:' %>
+          <%= f.text_area :interests, class: 'form-control' %>
+          <%= f.submit "Add interests", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
   </aside>
 </div>
-<%= link_to 'friends', friends_path %>
+
   
 
   

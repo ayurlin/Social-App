@@ -1,21 +1,30 @@
-<%= form_for(:session, url: login_path) do |f| %>
+<div class='login-form-container'>
+  <h3>Sign in to Your account</h3>
+  <%= form_for(:session, url: login_path, html: { id: 'login_form'}) do |f| %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control' %>
+  <div class='form-group'>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %>
-  
-  <%= f.label :remember_me, class: "checkbox inline" do %>
-    <%= f.check_box :remember_me %>
-    <span>Remember me on this computer</span>
+  <div class='form-group'>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this computer</span>
+    <% end %>
+  </div>
+
+  <%= f.submit 'Log in', class: 'btn btn-primary' %>
+
   <% end %>
-
-
-  <%= f.submit 'Log in', class: 'btn' %>
-  
-<% end %>
+  <%= link_to 'You don\'t have account yet? Sing up here', signup_path, class: 'btn btn-default redirect-link pull-right' %>
+</div>
 
 
 
-<%= link_to 'You don\'t have account yet? Sing up here', signup_path, class: 'btn' %>
+

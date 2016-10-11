@@ -1,34 +1,49 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$primary-color: #2f3033;
+$secondary-color: #eee;
+
+body {
+  background-color: $secondary-color;
+}
 a {
   border: none;
   display: inline-block;
-  &:hover, &:focus {
-    background-color: transparent;
-    text-decoration: none;
-  }
 }
 blockquote {
   margin: 50px 0 30px;
-  border-left: 5px solid #a01c39;
+  border-left: 5px solid $primary-color;
   .post {
     margin: 0;
   }
 }
+.block {
+  display: block;
+}
+.checkbox input[type='checkbox'] {
+  margin: 2px 0 0;
+}
+.checkbox span {
+  margin-left: 30px;
+}
 .main-nav li > a.active {
-  color: #fff;
-  background-color: #a01c39;
+  color: #2f3033;
+  background-color: $secondary-color;
 }
 .notice {
   margin: 0;
   position: fixed;
-  background-color: #a01c39;
+  background-color: $primary-color;
   color: #fff;
 }
 .thumb-img {
   height: 50px;
   width: 50px;
+}
+.normal-avatar {
+  width: 150px;
+  height: 150px;
 }
 
 /* HEADER */
@@ -36,7 +51,7 @@ blockquote {
 header {
   width: 100%;
   height: 50px;
-  border-bottom: solid 2px #a01c39;
+  background-color: $primary-color;
   .main-nav {
     height: 50px;
     li {
@@ -48,12 +63,12 @@ header {
         border-radius: 0;
         text-align: center;
         line-height: 25px;
-        color: #a01c39;
+        color: #fff;
         &:hover {
-          background-color: #C7ABB1;
-          color: #fff;
+          text-decoration: none;
+          color: $primary-color;
         }
-      }  
+      }
     }
   }
 }
@@ -62,21 +77,13 @@ header {
   font-size: 16px;
   display: block;
   line-height: 2.9em;
+  color: $secondary-color;
 }
 
 /* END OF HEADER */
 
 /* MAIN PAGE */
 
-.add-comment-btn {
-  padding: 0;
-  a {
-  color: #fff;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 10px;
-  }
-}
 .post-author {
   margin: 60px 60px 10px 30px;
 }
@@ -97,14 +104,26 @@ p.created-at {
     text-align: center;
     margin: 80px 0 0;
   }
+  .single-post {
+    border-bottom: solid 1px $primary-color;
+  }
 }
+.post-author {
+  a {
+    color: $primary-color;
+  }
+}
+.post {
+  font-size: 14px;
+}
+
 
 
 .comments-container {          /* comments field*/
 
   .comment {
     margin: 15px;
-    font-size: 10px;
+    font-size: 12px;
     &.comment:not(:first-child) {
       border-top: solid 1px #ccc;
       padding-top: 40px;
@@ -129,16 +148,28 @@ p.created-at {
       padding-top: 30px;
       textarea {
         width: 50%;
-        height: 200px;
+        height: 150px;
         padding: 8px;
+      }
+      .btn[type='submit'] {
+        font-size: 12px;
       }
     }
   }
   .add-comment-btn {
     font-size: 12px;
-    margin: 70px 0 0;
+    margin: 40px 0 0;
+    a {
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    }
   }
-
+}
+.login-required {
+  margin-top: 30px;
+  font-size: 12px;
 }
 
 /* END OF MAIN PAGE */
@@ -151,9 +182,88 @@ p.created-at {
 form.edit_user {
   width: 60%;
   margin: 60px auto;
-  input#user_avatar {
-    display: inline-block;
+  float: left;
+  text-align: left;
+  input[type='submit'] {
+    width: 100%;
+    margin-top: 30px;
   }
 }
 
 /* END OF EDIT PAGE */
+
+/* SIGN IN PAGE */
+
+.login-form-container {
+  margin: 120px auto 0;
+  width: 45%;
+  #login_form {
+    margin-top: 80px;
+    .btn[type='submit'] {
+      width: 100%;
+    }
+  }
+}
+.redirect-link {
+  margin-top: 20px;
+}
+/* END OF SIGN IN PAGE */
+
+
+/* SIGN UP PAGE */
+
+.register-form-container {
+  margin: 100px auto 0;
+  width: 45%;
+  #register_form {
+    margin-top: 80px;
+    .btn[type='submit'] {
+      width: 100%;
+    }
+  }
+}
+
+/* END OF SIGN UP PAGE */
+
+/* PROFILE PAGE */
+
+.profile-page {
+  padding: 40px;
+  aside {
+    text-align: center;
+  }
+  .post {
+    text-align: justify;
+    width: 60%;
+  }
+  .add-post {
+    margin: 80px 0 0 20px;
+  }
+}
+.edit-btn {
+  display: block;
+  width: 100px;
+}
+.add-interests-btn, .see-friends-btn {
+  display: block;
+  width: 80%;
+  margin: 30px auto;
+}
+.add-post-btn {
+  margin-top: 40px;
+}
+#add_interest {
+  form {
+    width: 100%;
+    margin: 30px 0 0;
+    textarea {
+      height: 150px;
+    }
+  }
+}
+.interests {
+  margin: 20px 0;
+}
+
+
+/* END OF PROFILE PAGE */

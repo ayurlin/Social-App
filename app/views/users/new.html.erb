@@ -1,5 +1,5 @@
-<h1>New User</h1>
-
-<%= render 'form', user: @user %>
-<%= link_to 'You already have account?', login_path %>
-
+<div class='register-form-container'>  
+  <h3>Create Your account</h3>
+  <%= render 'form', user: @user %>
+  <%= link_to 'You already have account? Sign in here', login_path, class: 'btn btn-default redirect-link pull-right' %>
+</div>

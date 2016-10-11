@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :pending_friends, through: :pending_user_friendships, source: :friend
 
   enum gender: [ :male, :female ]
-
+  
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -43,6 +43,10 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def full_name
+    "#{name} #{last_name}"
   end
   
 end

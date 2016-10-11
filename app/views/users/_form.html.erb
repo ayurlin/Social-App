@@ -1,8 +1,7 @@
-<%= form_for(user) do |f| %>
+<%= form_for(user, html: {id: 'register_form'}) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,39 +9,39 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  
+  <div class='form-group'>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+
+  <div class='form-group'>
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class='form-group'>
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control' %>
   </div>
   <% if current_user.nil? %>
-    <div class="field">
+    <div class='form-group'>
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class='form-group'>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class='form-group'>
     <%= f.label :avatar, 'Add Your avatar' %><br>
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Create account", class: "btn btn-primary" %>
-  </div>
+  <%= f.submit "Create account", class: "btn btn-primary" %>
 <% end %>
+
