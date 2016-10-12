@@ -4,7 +4,7 @@
       <div class='col-sm-3'>
         <%= image_tag(@user.avatar.url, class: 'normal-avatar') %>
       </div>
-      <p class='col-sm-3'><strong>Name: </strong><%= @user.name %></p>
+      <p class='col-sm-3'><strong>Name: </strong><%= @user.full_name %></p>
       <p class='col-sm-3'><strong>Email: </strong><%= @user.email %></p>
       <% if @user.gender.nil? %>
         <p class='col-sm-3'><strong>gender: </strong>User did not specify gender</p>
@@ -21,14 +21,12 @@
         </div>
       <% end %>
       <% @user.posts.each do |post| %>
-        <div>
-          <blockquote>
-            <p class='post'><%= post.content %></p>
-          </blockquote>
+        <div class='profile-post'>
+          <p class='post'><%= post.content %></p>
           <div class='row'>
             <p class='created-at col-sm-5'><%= post.created_at %></p>
             <% if post.created_at != post.updated_at %>
-              <p class='created-at col-sm-6'>Updated: <%= post.updated_at %></p>
+              <p class='created-at col-sm-6 pull-right text-right'>Updated: <%= post.updated_at %></p>
             <% end %>
           </div>
           <% if same_user %>
@@ -41,7 +39,7 @@
   <aside class='col-sm-3'>
     <% if logged_in? %>
       <% if !is_friend && !same_user %>
-        <%= link_to 'Add Friend', new_user_friendship_path(friend_id: @user) %>
+        <%= link_to 'Request friendship', new_user_friendship_path(friend_id: @user), class: 'btn btn-success' %>
       <% elsif same_user %>
         <h4>Your friendlist:</h4>
         <% if current_user.friends.empty? %>
@@ -49,17 +47,23 @@
         <% else %>
           <% current_user.friends.each do |friend| %>
             <%= link_to friend.full_name, user_path(id: friend) %></p>
+            <%= link_to 'See my friends', friends_path, class: 'btn btn-success see-friends-btn' %>
           <% end %>
         <% end %>
-        <%= link_to 'See my friends', friends_path, class: 'btn btn-success see-friends-btn' %>
       <% end %>
     <% end %>
     <h4>My interests:</h4>
       <p class='interests'><%= @user.interests %></p>
     <% if same_user %>
-      <button class='btn btn-info add-interests-btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interest'>
-        Add interest
-      </button>
+      <% if @user.interests.empty? %>
+        <button class='btn btn-info add-interests-btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interests'>
+        Add interests
+        </button>
+      <% else %>
+        <button class='btn btn-info add-interests-btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interests'>
+        Change interests
+        </button>
+      <% end %>
       <div class='collapse' id='add_interest'>
         <%= form_for @user, remote: true do |f| %>
           <%= f.label :interests, 'Add Your interest:' %>

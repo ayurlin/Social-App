@@ -5,7 +5,9 @@ module UsersHelper
   end
 
   def same_user
-    current_user.id == @user.id
+    if logged_in?
+      current_user.id == @user.id
+    end
   end
 
 end
