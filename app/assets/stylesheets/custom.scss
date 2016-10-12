@@ -93,7 +93,7 @@ p.created-at {
 }
 .see-comments-btn {
   font-size: 12px;
-  margin: 0 0 20px 20px;
+  margin: 20px 0 0;
   .comments-count {
     right: -8px;
     font-size: 14px;
@@ -101,6 +101,9 @@ p.created-at {
 }
 .posts-container {
   margin: 0 50px;
+  .see-comments-btn {
+    margin: 20px 0;
+  }
   h2 {
     text-align: center;
     margin: 80px 0 0;
@@ -246,7 +249,7 @@ form.edit_user {
 .edit-btn {
   display: block;
   width: 100px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .add-interests-btn, .see-friends-btn {
   display: block;

@@ -20,7 +20,7 @@
           </div>
         </div>
       <% end %>
-      <% @user.posts.each do |post| %>
+      <% @user.posts.by_date.each do |post| %>
         <div class='profile-post'>
           <p class='post'><%= post.content %></p>
           <div class='row'>
@@ -29,6 +29,21 @@
               <p class='created-at col-sm-6 pull-right text-right'>Updated: <%= post.updated_at %></p>
             <% end %>
           </div>
+          <a class="btn btn-primary see-comments-btn" role="button" data-toggle="collapse" href="#commentCollapse-<%= post.id %>" aria-expanded="false" aria-controls="commentCollapse">see comments <span class='comments-count badge'><%= post.comments.count %></span></a>
+            <div class="collapse well comments-container" id="commentCollapse-<%= post.id %>">
+              <% post.comments.each do |c| %>
+                <p class='comment'><%= c.content %></p>
+                <p class='comment-author'><%= c.user.name %></p>
+                <span class='created-at'><%= c.created_at %></span>
+              <% end %>
+              <% if logged_in? %>
+                <%= link_to 'Add Comment', new_post_comment_path(post_id: post.id), remote: true, class: 'btn btn-info add-comment-btn' %>
+                <a class="btn btn-primary see-comments-btn add-comment-btn" role="button" data-toggle="collapse" href="#commentCollapse-<%= post.id %>" aria-expanded="false" aria-controls="commentCollapse">Close comments</a>
+                <div class='add-comment add-comment-post-<%= post.id %>'></div>
+              <% else %>
+                <p class='login-required text-danger'>Please log in to comment on posts</p>
+              <% end %>
+            </div>
           <% if same_user %>
             <%= link_to 'Edit', edit_post_path(post.id), class: 'btn btn-warning edit-btn' %>
           <% end %>
