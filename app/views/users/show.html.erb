@@ -61,7 +61,7 @@
           <p class='text-danger'>You don't have any friends</p>
         <% else %>
           <% current_user.friends.each do |friend| %>
-            <%= link_to friend.full_name, user_path(id: friend) %></p>
+            <%= link_to friend.full_name, user_path(id: friend), class: 'friend text-success' %></p>
             <%= link_to 'See my friends', friends_path, class: 'btn btn-success see-friends-btn' %>
           <% end %>
         <% end %>

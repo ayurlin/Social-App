@@ -115,6 +115,8 @@ p.created-at {
 .post-author {
   a {
     color: $primary-color;
+    text-decoration: none;
+    margin-left: 10px;
   }
 }
 .post {
@@ -276,6 +278,9 @@ form.edit_user {
   border-radius: 6px;
   margin: 40px 0;
   padding: 20px;
+}
+.friend:hover {
+  text-decoration: none;
 }
 
 
