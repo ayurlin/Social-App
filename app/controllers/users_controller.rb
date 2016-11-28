@@ -11,10 +11,6 @@ class UsersController < ApplicationController
     else
       @users = User.all.order("created_at DESC")
     end
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   # GET /users/1
