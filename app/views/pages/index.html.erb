@@ -17,7 +17,7 @@
             <%= link_to post.user.name, user_path(post.user, post) %>
           </h4>
           <blockquote>
-            <p class='post'><%= post.content %></p>
+            <p class='post'><%= raw(post.content) %></p>
           </blockquote>
           <div class='row'>
             <p class='created-at col-sm-5'>Created: <%= post.created_at %></p>

@@ -25,7 +25,7 @@
       <% end %>
       <% @user.posts.by_date.each do |post| %>
         <div class='profile-post'>
-          <p class='post'><%= post.content %></p>
+          <p class='post'><%= raw(post.content) %></p>
           <div class='row'>
             <p class='created-at col-sm-5'><%= post.created_at %></p>
             <% if post.created_at != post.updated_at %>
