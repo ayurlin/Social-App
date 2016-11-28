@@ -3,6 +3,11 @@
     <div class='col-sm-12'>
       <h2>Latest posts</h2>
     </div>
+    <%= form_tag(users_path, :method => "get", :remote => "true", id: "search-form", class: 'pull-right') do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for Friend" %>
+      <%= submit_tag "Search", :name => nil, :autocomplete => 'off' %>
+      <div id="results"><%= render 'users' %></div>
+    <% end %>
   </div>
   <div class='row'>
     <div class='col-sm-6'>

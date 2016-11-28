@@ -70,7 +70,7 @@
     <h4>My interests:</h4>
       <p class='interests'><%= @user.interests %></p>
     <% if same_user %>
-      <% if @user.interests.empty? %>
+      <% if @user.interests.nil? %>
         <button class='btn btn-info add-interests-btn' type='button' data-toggle='collapse' data-target='#add_interest' aria-expanded='false' aria-controls='add_interests'>
         Add interests
         </button>

@@ -48,5 +48,10 @@ class User < ApplicationRecord
   def full_name
     "#{name} #{last_name}"
   end
+
+  def self.search(search)
+    where("name LIKE ? OR last_name LIKE ?", "%#{search}%", "%#{search}%") 
+  end
+      
   
 end
