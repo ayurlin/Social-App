@@ -51,6 +51,9 @@
     </div>
     <div class='col-sm-3'>
     <% if logged_in? %>
+      <div class='info-box'>
+        <p>info</p><span class='badge'>0</span>
+      </div>
       <span class='user-name'> Witaj <%= current_user.name %>!</span>
     <% end %>
     </div>

@@ -20,6 +20,12 @@ blockquote {
 }
 .alerts-bar {
   padding: 15px 0 10px;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 999;
+  background-color: $secondary-color;
 }
 .block {
   display: block;
@@ -33,12 +39,6 @@ blockquote {
 .main-nav li > a.active {
   color: #2f3033;
   background-color: $secondary-color;
-}
-.notice {
-  margin: 0;
-  position: fixed;
-  background-color: $primary-color;
-  color: #fff;
 }
 .thumb-img {
   height: 50px;
@@ -81,6 +81,18 @@ header {
   display: block;
   line-height: 2.9em;
   color: $secondary-color;
+}
+.info-box {
+  color: #fff;
+  float: left;
+  margin-top: 15px;
+  p {
+    float: left;
+    margin-right: 6px;
+  }
+  span {
+    float: right;
+  }
 }
 
 /* END OF HEADER */
