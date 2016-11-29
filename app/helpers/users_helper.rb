@@ -1,7 +1,9 @@
 module UsersHelper
 
   def is_friend
-    current_user.friends.ids.include? @user.id
+    if current_user
+      current_user.friends.ids.include? @user.id
+    end
   end
 
   def same_user

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   
-  resources :user_friendships do
+  resources :user_friendships, :path => '/friends' do
     member do
       put :accept
     end

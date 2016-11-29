@@ -16,7 +16,7 @@ class UserFriendshipsController < ApplicationController
     else
       flash[:notice] = 'This friendship could not be accepted'
     end
-    redirect_to user_friendships_path
+    redirect_to friends_path
   end
   
   def new
