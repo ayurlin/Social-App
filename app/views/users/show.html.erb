@@ -49,6 +49,7 @@
             </div>
           <% if same_user %>
             <%= link_to 'Edit', edit_post_path(post.id), class: 'btn btn-warning edit-btn' %>
+            <%= link_to 'Destroy', post, :method => :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
           <% end %>
         </div>
       <% end %>
@@ -90,8 +91,8 @@
         <% else %>
           <% current_user.friends.each do |friend| %>
             <%= link_to friend.full_name, user_path(id: friend), class: 'friend text-success' %></p>
-            <%= link_to 'See my friends', friends_path, class: 'btn btn-success see-friends-btn' %>
           <% end %>
+          <%= link_to 'See my friends', friends_path, class: 'btn btn-success see-friends-btn' %>
         <% end %>
       <% end %>
     <% end %>

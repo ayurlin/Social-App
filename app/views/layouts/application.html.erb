@@ -9,9 +9,9 @@
   </head>
 
   <body>
+    <%= render 'layouts/messages' %>
     <%= render 'layouts/header' %>
     <div class='container-fluid'>
-      <p class='notice'><%= success %><%= error %><%= notice %></p>
       <%= yield %>
             <%= debug(params) if Rails.env.development? %>
     </div>

@@ -18,6 +18,9 @@ blockquote {
     margin: 0;
   }
 }
+.alerts-bar {
+  padding: 15px 0 10px;
+}
 .block {
   display: block;
 }
@@ -285,3 +288,38 @@ form.edit_user {
 
 
 /* END OF PROFILE PAGE */
+
+/* POSTS */
+
+.wysiwig-field {
+  max-width: 700px;
+  iframe.wysihtml5-sandbox {
+    width: 94.5%!important;
+    height: 300px!important;
+    border: solid 1px #ccc!important;
+    margin-bottom: 40px!important;
+  }
+}
+
+/* END OF POSTS */
+
+/* FRIENDS */
+
+.friend-list-element {
+  display: block;
+  margin: 20px 0 0 30px;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 15px 10px;
+  .thumb-img {
+    margin-right: 15px;
+  }
+}
+.avatar-element {
+  width: 80px;
+  float: left;
+  height: 80px;
+  text-align: center;
+}
+
+/* END OF FRIENDS */
