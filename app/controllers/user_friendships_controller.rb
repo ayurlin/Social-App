@@ -19,6 +19,16 @@ class UserFriendshipsController < ApplicationController
     redirect_to friends_path
   end
   
+  def update
+    @user_friendship = current_user.user_friendships.find(params[:id])
+    if @user_friendship.accept!
+      flash[:notice] = "You are now friend with #{@user_friendship.friend.name}"
+    else
+      flash[:notice] = 'This friendship could not be accepted'
+    end
+    redirect_to friends_path
+  end
+
   def new
     if logged_in?
       if params[:friend_id]

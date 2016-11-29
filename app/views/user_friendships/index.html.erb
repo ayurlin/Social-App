@@ -15,15 +15,15 @@
         <b><%= link_to friend.full_name, user_path(friend), class: 'text-success' %></b>
         <% if friendship.pending? %>
           <p>Friendship is pending.</p>
-          <%= link_to 'Delete request', edit_user_friendship_path(friendship) %>
+          <%= link_to 'Delete request', friendship, :method => :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
         <% end %>
         <% if friendship.requested? %>
           <p>Friendship requested.</p>
-          <%= link_to 'Accept friendship', edit_user_friendship_path(friendship) %>
+          <%= link_to 'Accept friendship', friendship, :method => :put, data: {confirm: "Are you sure?"}, class: 'btn btn-warning' %>
         <% end %>
         <% if friendship.accepted? %>
           <p>Friendship started <%= friendship.updated_at %> </p>
-          <%= link_to 'Update friendship', edit_user_friendship_path(friendship) %>
+          <%= link_to 'Destroy', friendship, :method => :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
         <% end %>
       </div>
     </div>
