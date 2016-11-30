@@ -52,7 +52,17 @@
     <div class='col-sm-3'>
     <% if logged_in? %>
       <div class='info-box'>
-        <p>info</p><span class='badge'>0</span>
+        <% @user_friendships.each do |friendship| %>
+          <% friend = friendship.friend %>
+            <% if friendship.requested? %>
+              <p>Friendship requests</p><span class='badge'><%= @count %></span>
+              <div id='<%=dom_id(friendship) %>' class='friend'>
+                <%= link_to friend.full_name, user_path(friend) %>
+                <%= link_to 'Accept friendship', friendship, :method => :put, data: {confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+                <%= link_to 'Destroy', friendship, :method => :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+              </div>
+            <% end %>
+        <% end %>
       </div>
       <span class='user-name'> Witaj <%= current_user.name %>!</span>
     <% end %>

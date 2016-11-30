@@ -10,6 +10,7 @@ class UserFriendshipsController < ApplicationController
   end
 
   def accept
+    @user_friendships = current_user.user_friendships.all
     @user_friendship = current_user.user_friendships.find(params[:id])
     if @user_friendship.accept!
       flash[:notice] = "You are now friend with #{@user_friendship.friend.name}"
@@ -20,6 +21,7 @@ class UserFriendshipsController < ApplicationController
   end
   
   def update
+    @user_friendships = current_user.user_friendships.all
     @user_friendship = current_user.user_friendships.find(params[:id])
     if @user_friendship.accept!
       flash[:notice] = "You are now friend with #{@user_friendship.friend.name}"
@@ -30,6 +32,7 @@ class UserFriendshipsController < ApplicationController
   end
 
   def new
+    @user_friendships = current_user.user_friendships.all
     if logged_in?
       if params[:friend_id]
         @friend = User.find(params[:friend_id])
@@ -62,11 +65,13 @@ class UserFriendshipsController < ApplicationController
 
   def edit
     @user_friendship = current_user.user_friendships.find(params[:id])
+    @user_friendships = current_user.user_friendships.all
     @friend = @user_friendship.friend
   end
 
   def destroy
     @user_friendship = current_user.user_friendships.find(params[:id])
+    @user_friendships = current_user.user_friendships.all
     if @user_friendship.destroy
       redirect_to friends_path
       flash[:success] = 'destroyed'

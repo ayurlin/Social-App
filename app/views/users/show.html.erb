@@ -73,16 +73,6 @@
               <span>Friendship is pending.</span>
               <%= link_to 'Delete request', edit_user_friendship_path(friendship) %>
             <% end %>
-            <% if friendship.requested? %>
-              <div id='<%=dom_id(friendship) %>' class='friend'>
-                <%= link_to friend.full_name, user_path(friend) %>
-                <%= link_to user_path(friend) do %>
-                  <%= image_tag friend.avatar.thumb.url, class: 'thumb-img' %>
-                <% end %>
-              </div>
-              <span>Friendship requested.</span>
-              <%= link_to 'Accept friendship', edit_user_friendship_path(friendship) %>
-            <% end %>
           </div>
         <% end %>
         <h4>Your friendlist:</h4>

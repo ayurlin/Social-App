@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <p>
+    <%= link_to user.name, user_path(user.id), class: 'btn btn-info' %>
+  </p> 
+<% end %>
