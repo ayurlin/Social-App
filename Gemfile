@@ -33,7 +33,7 @@ gem 'bootsy'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'state_machine'
-
+gem 'twitter-typeahead-rails'
 
 group :test do
   gem 'factory_girl_rails'

@@ -16,4 +16,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def suggest
+    @example = User.all
+    @search = @example.collect { |user| user.name }
+    render json: @search
+  end
+
 end

@@ -4,7 +4,7 @@
       <h2>Latest posts</h2>
     </div>
     <%= form_tag(root_path, :method => "get", remote: true, id: "search-form", class: 'pull-right') do %>
-      <%= text_field_tag :search, params[:search], required: true, placeholder: "Search for Friend" %>
+      <%= text_field_tag :search, params[:search], required: true, placeholder: "Search for Friend", class: 'typeahead' %>
       <%= submit_tag "Search", :name => nil, :autocomplete => 'off' %>
     <% end %>
     <div id="results"></div>
