@@ -34,10 +34,16 @@
           </div>
           <a class="btn btn-primary see-comments-btn" role="button" data-toggle="collapse" href="#commentCollapse-<%= post.id %>" aria-expanded="false" aria-controls="commentCollapse">see comments <span class='comments-count badge'><%= post.comments.count %></span></a>
             <div class="collapse well comments-container" id="commentCollapse-<%= post.id %>">
-              <% post.comments.each do |c| %>
-                <p class='comment'><%= c.content %></p>
-                <p class='comment-author'><%= c.user.name %></p>
-                <span class='created-at'><%= c.created_at %></span>
+              <% post.comments.each do |comment| %>
+                <p class='comment'><%= comment.content %></p>
+                <% if logged_in? && (comment.user.id == current_user.id) %>
+                  <%= link_to 'Edit', edit_post_comment_path(post, comment) %>
+                <% end %>
+                <p class='comment-author'><%= comment.user.name %></p>
+                <span class='created-at'><%= comment.created_at %></span>
+                <% if comment.created_at != comment.updated_at %>
+                  <p class='created-at col-sm-6 text-right pull-right'>Updated: <%= comment.updated_at %></p>
+                <% end %>
               <% end %>
               <% if logged_in? %>
                 <%= link_to 'Add Comment', new_post_comment_path(post_id: post.id), remote: true, class: 'btn btn-info add-comment-btn' %>
