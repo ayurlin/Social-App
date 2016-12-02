@@ -9,6 +9,7 @@
     <% end %>
     <div id="results"></div>
   </div>
+  <%= paginate @posts %>
   <div class='row'>
     <div class='col-sm-6'>
       <% @posts.by_date.each do |post| %>

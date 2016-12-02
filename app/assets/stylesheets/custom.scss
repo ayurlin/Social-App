@@ -97,6 +97,26 @@ header {
 
 /* MAIN PAGE */
 
+.pagination {
+  a {
+    color: $primary-color;
+    padding: 5px 10px;
+    border: solid 1px $primary-color;
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+  .current {
+    padding: 6px 9px;
+    margin: 0 4px;
+    border: solid 1px $primary-color;
+    color: $secondary-color;
+    background-color: $primary-color;
+  }
+}
+.pagination .last a, .pagination .first a {
+  display: none;
+}
 .post-author {
   margin: 60px 60px 10px 30px;
 }

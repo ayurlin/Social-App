@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'bootsy'
+gem 'kaminari'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'state_machine'
