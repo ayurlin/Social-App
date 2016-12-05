@@ -52,6 +52,10 @@ class User < ApplicationRecord
   def self.search(search)
     where("name LIKE ? OR last_name LIKE ?", "%#{search}%", "%#{search}%") 
   end
+
+  def to_param
+    "#{id}=#{name}#{last_name}"
+  end
       
   
 end

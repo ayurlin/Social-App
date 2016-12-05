@@ -77,7 +77,7 @@
                 <% end %>
               </div>
               <span>Friendship is pending.</span>
-              <%= link_to 'Delete request', edit_user_friendship_path(friendship) %>
+              <%= link_to 'Delete request', friendship, :method => :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
             <% end %>
           </div>
         <% end %>

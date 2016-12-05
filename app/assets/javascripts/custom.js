@@ -29,9 +29,11 @@ $(document).ready(function() {
     source: numbers.ttAdapter(),
     templates: {
             empty: 'not found', //optional
-            suggestion: function(item){ return '<a href="/users/' + item.id + '">' + item.name + ' ' + item.last_name + '<img class="thumb-img" src="'+item.avatar.url+'" />' + '</a>' }
+            suggestion: function(item){ return '<a href="/users/' + item.id + '=' + item.name + item.last_name + '">' + item.name + ' ' + item.last_name + '<img class="thumb-img" src="'+item.avatar.url+'" />' + '</a>' }
         }
-  });
+  })
+
+
 
 
 

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/friends', to: 'user_friendships#index'
-  get 'search' => "pages#suggest"
+  get '/search', to: "pages#suggest"
   root 'pages#index'
   
 end

@@ -14,7 +14,7 @@
         <div class='single-post'>
           <h4 class='post-author'>
             <%= image_tag post.user.avatar.thumb.url, class: 'thumb-img' %>
-            <%= link_to post.user.name, user_path(post.user, post) %>
+            <%= link_to post.user.name, user_path(post.user) %>
           </h4>
           <blockquote>
             <p class='post'><%= raw(post.content) %></p>

@@ -20,6 +20,7 @@
         <% if friendship.requested? %>
           <p>Friendship requested.</p>
           <%= link_to 'Accept friendship', friendship, :method => :put, data: {confirm: "Are you sure?"}, class: 'btn btn-warning' %>
+          <%= link_to 'Ingore request', friendship, :method => :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
         <% end %>
         <% if friendship.accepted? %>
           <p>Friendship started <%= friendship.updated_at %> </p>
