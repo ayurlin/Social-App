@@ -10,16 +10,11 @@ class PagesController < ApplicationController
         @users = User.search(params[:search]).order("created_at DESC")
       end
     end
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def suggest
-    @example = User.all
-    @search = @example.collect { |user| user.name }
-    render json: @search
+    @search = User.all
+    render json: @search.where('name like ?', "%#{params[:query]}%").or(@search.where('last_name like ?', "%#{params[:query]}%"))
   end
 
 end

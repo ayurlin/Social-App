@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if params[:search]
       @users = User.where.not(id: current_user.id).search(params[:search]).order("created_at DESC")
     end
+    redirect_to root_url
   end
 
   # GET /users/1

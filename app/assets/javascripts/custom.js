@@ -23,8 +23,16 @@ $(document).ready(function() {
   numbers.initialize();
 
   // instantiate the typeahead UI
-  $('.typeahead').typeahead(null, {
-    source: numbers.ttAdapter()
+  $('.typeahead').typeahead({ minLength: 2, highlight: true }, {
+    display: function(item){ return item.name+' '+item.last_name},
+    limit: 10,
+    source: numbers.ttAdapter(),
+    templates: {
+            empty: 'not found', //optional
+            suggestion: function(item){ return '<a href="/users/' + item.id + '">' + item.name + ' ' + item.last_name + '<img class="thumb-img" src="'+item.avatar.url+'" />' + '</a>' }
+        }
   });
+
+
 
 });
